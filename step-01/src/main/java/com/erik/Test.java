@@ -9,11 +9,6 @@ import com.spring.BeanFactory;
  * @date 2023/12/21 16:56
  */
 public class Test {
-
-    /**
-     * 主程序入口
-     * @param args 命令行参数
-     */
     public static void main(String[] args) {
         // 创建 BeanFactory
         BeanFactory factory = new BeanFactory();
