@@ -1,11 +1,7 @@
 package com.spring.factory.support;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.spring.BeanException;
-import com.spring.PropertyValue;
-import com.spring.PropertyValues;
 import com.spring.factory.config.BeanDefinition;
-import com.spring.factory.config.BeanReference;
 
 import java.lang.reflect.Constructor;
 
@@ -15,20 +11,13 @@ import java.lang.reflect.Constructor;
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
 
-//    private InstantiationStrateg instantiationStrateg = new CglibSubclassingInstantiationStrategy();
-
-    private InstantiationStrateg instantiationStrateg = new SimpleInstantiationStrategy();
-
+    private InstantiationStrateg instantiationStrateg = new CglibSubclassingInstantiationStrategy();
 
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object... args) throws BeanException {
         Object bean = null;
-        try {
-            bean = createBeanInstance(beanName, beanDefinition, args);
-            addPropertyValues(beanName, bean, beanDefinition);
-        } catch (Exception e) {
-            throw new BeanException("创建bean实例失败", e);
-        }
+        bean = createBeanInstance(beanName, beanDefinition, args);
+
         if (bean != null) {
             addSingleton(beanName, bean);
         }
@@ -49,25 +38,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             }
         }
         return getInstantiationStrateg().instantiate(beanDefinition, beanName, ctor, args);
-    }
-
-    protected void addPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
-
-        try {
-            PropertyValues propertyValues = beanDefinition.getPropertyValues();
-            for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
-                String name = propertyValue.getName();
-                Object value = propertyValue.getValue();
-
-                if (value instanceof BeanReference) {
-                    BeanReference beanReference = (BeanReference) value;
-                    value = getBean(beanReference.getBeanName());
-                }
-                BeanUtil.setFieldValue(bean, name, value);
-            }
-        } catch (BeanException e) {
-            throw new BeanException("Error setting property values：" + beanName);
-        }
     }
 
     public InstantiationStrateg getInstantiationStrateg() {
