@@ -1,14 +1,8 @@
 package com.erik;
 
-import com.erik.dao.UserDao;
 import com.erik.service.UserService;
-import com.spring.PropertyValue;
-import com.spring.PropertyValues;
-import com.spring.factory.config.BeanDefinition;
-import com.spring.factory.config.BeanReference;
-import com.spring.factory.support.BeanDefinitionRegistry;
-import com.spring.factory.support.DefaultListableBeanFactory;
-import com.spring.factory.xml.XmlBeanDefinitionReader;
+import com.spring.beans.factory.support.DefaultListableBeanFactory;
+import com.spring.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
  * @author fc

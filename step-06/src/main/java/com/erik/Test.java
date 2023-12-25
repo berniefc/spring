@@ -1,8 +1,8 @@
 package com.erik;
 
 import com.erik.service.UserService;
-import com.spring.factory.support.DefaultListableBeanFactory;
-import com.spring.factory.xml.XmlBeanDefinitionReader;
+import com.spring.beans.factory.support.DefaultListableBeanFactory;
+import com.spring.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
  * @author fc

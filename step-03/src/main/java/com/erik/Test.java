@@ -4,9 +4,9 @@ import com.erik.dao.UserDao;
 import com.erik.service.UserService;
 import com.spring.PropertyValue;
 import com.spring.PropertyValues;
-import com.spring.factory.config.BeanDefinition;
-import com.spring.factory.config.BeanReference;
-import com.spring.factory.support.DefaultListableBeanFactory;
+import com.spring.io.config.BeanDefinition;
+import com.spring.io.config.BeanReference;
+import com.spring.beans.factory.support.DefaultListableBeanFactory;
 
 /**
  * @author fc
