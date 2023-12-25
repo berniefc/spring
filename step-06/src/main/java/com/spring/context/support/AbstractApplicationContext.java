@@ -29,9 +29,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     protected abstract void refreshBeanFactory() throws BeanException;
 
-    ConfigurableListableBeanFactory getBeanFactory() {
-        return null;
-    }
+    protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
    private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory){
 
