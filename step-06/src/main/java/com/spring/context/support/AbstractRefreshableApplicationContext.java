@@ -12,7 +12,6 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 
     private DefaultListableBeanFactory beanFactory;
 
-
     @Override
     protected void refreshBeanFactory() throws BeanException {
         DefaultListableBeanFactory beanFactory = createBeanFactory();
@@ -28,7 +27,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 
     @Override
     protected ConfigurableListableBeanFactory getBeanFactory() {
-        return (ConfigurableListableBeanFactory) beanFactory;
+        return beanFactory;
     }
 
 }

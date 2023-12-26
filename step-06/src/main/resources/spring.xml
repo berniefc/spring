@@ -5,7 +5,11 @@
 
     <bean id="userService" class="com.erik.service.UserService">
         <property name="uId" value="10001"/>
+        <property name="company" value="腾讯"/>
         <property name="userDao" ref="userDao"/>
     </bean>
+
+    <bean class="com.erik.common.MyBeanPostProcessor"/>
+    <bean class="com.erik.common.MyBeanFactoryPostProcessor"/>
 
 </beans>

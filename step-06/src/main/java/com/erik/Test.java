@@ -3,6 +3,7 @@ package com.erik;
 import com.erik.service.UserService;
 import com.spring.beans.factory.support.DefaultListableBeanFactory;
 import com.spring.beans.factory.xml.XmlBeanDefinitionReader;
+import com.spring.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author fc
@@ -10,12 +11,10 @@ import com.spring.beans.factory.xml.XmlBeanDefinitionReader;
  */
 public class Test {
     public static void main(String[] args) {
-        //初始化工厂
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-        reader.loadBeanDefinitions("classpath:spring.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        UserService userService = (UserService) applicationContext.getBean("userService");
 
-        UserService userService = (UserService) beanFactory.getBean("userService");
         userService.queryUserInfo();
+
     }
 }

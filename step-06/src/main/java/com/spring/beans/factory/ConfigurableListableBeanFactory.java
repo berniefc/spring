@@ -3,6 +3,7 @@ package com.spring.beans.factory;
 import com.spring.beans.BeanException;
 import com.spring.beans.factory.BeanFactory;
 import com.spring.beans.factory.factory.AutowireCapableBeanFactory;
+import com.spring.beans.factory.factory.BeanDefinition;
 import com.spring.beans.factory.factory.ConfigurableBeanFactory;
 
 /**
@@ -12,5 +13,7 @@ import com.spring.beans.factory.factory.ConfigurableBeanFactory;
 public interface ConfigurableListableBeanFactory extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
 
     void preInstantiateSingletons() throws BeanException;
+
+    BeanDefinition getBeanDefinition(String beanName) throws BeanException;
 
 }
